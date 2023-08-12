@@ -17,7 +17,11 @@ const ListItem: React.FC<Props> = ({ item, onChange }) => {
                     checked={item.checked}
                     onChange={() => onChange(item)}
                 />
-                <p className='list-item-value'>{item.value}</p>
+                <p
+                    className={!item.checked ? 'list-item-value' : 'list-item-value-checked'}
+                >
+                    {item.value}
+                </p>
             </span>
         </li>
     )
