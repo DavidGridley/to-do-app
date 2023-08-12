@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 import AddItem from './components/AddItem'
-import ToDoList from './components/ToDoList'
+import ListItem from './components/ListItem'
 
 
 function App() {
@@ -23,7 +23,9 @@ function App() {
     <>
       <h1>To do:</h1>
       <AddItem value={listItem} onChange={handleChange} onClick={handleClick} />
-      <ToDoList list={toDoList} />
+      <ul>
+        {toDoList.map(item => <ListItem value={item} />)}
+      </ul>
     </>
   )
 }
