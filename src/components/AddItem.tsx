@@ -16,7 +16,12 @@ const AddItem: React.FC<Props> = ({ value, onChange, onClick }) => {
                     onChange(event.target.value)
                 }
             />
-            <button className='add-item-button' onClick={onClick}>Add</button>
+            <button className='add-item-button' onClick={(event) => {
+                event.preventDefault();
+                onClick();
+            }}>
+                Add
+            </button>
         </div>
     )
 }
