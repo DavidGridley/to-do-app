@@ -10,16 +10,20 @@ const AddItem: React.FC<Props> = ({ value, onChange, onClick }) => {
     return (
         <div>
             <input
+                data-testid='add-item-input'
                 className='add-item-input'
                 value={value}
                 onChange={(event) =>
                     onChange(event.target.value)
                 }
             />
-            <button className='add-item-button' onClick={(event) => {
-                event.preventDefault();
-                onClick();
-            }}>
+            <button
+                data-testid='add-item-button'
+                className='add-item-button'
+                onClick={(event) => {
+                    event.preventDefault();
+                    onClick();
+                }}>
                 Add
             </button>
         </div>

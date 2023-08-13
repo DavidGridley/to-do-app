@@ -42,7 +42,7 @@ function App() {
       <AddItem value={listItem.value} onChange={handleChange} onClick={handleClick} />
 
       <ul>
-        {toDoList.map(item => <ListItem item={item} onChange={handleCheck} />)}
+        {toDoList.map(item => <ListItem key={item.value} item={item} onChange={handleCheck} />)}
       </ul>
     </>
   );
