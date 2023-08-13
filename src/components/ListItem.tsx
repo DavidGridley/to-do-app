@@ -12,6 +12,7 @@ const ListItem: React.FC<Props> = ({ item, onChange }) => {
         <li>
             <span className='list-item-row'>
                 <input
+                    data-testid='list-item-checkbox'
                     className='list-item-checkbox'
                     type='checkbox'
                     checked={item.checked}

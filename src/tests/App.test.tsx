@@ -40,3 +40,24 @@ test('adds multiple item to the to do list', () => {
 
   expect(toDoList).toHaveLength(3);
 });
+
+test('mark items as checked when checkbox is checked', () => {
+  const toDoInput = screen.getByTestId('add-item-input');
+  const addButton = screen.getByTestId('add-item-button');
+
+  addItem(toDoInput, 'Make lunch');
+  fireEvent.click(addButton);
+
+  const toDoList = screen.getAllByRole('listitem');
+
+  expect(toDoList).toHaveLength(1);
+
+  const listItemCheckbox = screen.getByTestId('list-item-checkbox') as HTMLInputElement;
+
+  expect(listItemCheckbox.checked).toBe(false);
+
+  fireEvent.click(listItemCheckbox);
+
+  expect(listItemCheckbox.checked).toBe(true);
+
+});
