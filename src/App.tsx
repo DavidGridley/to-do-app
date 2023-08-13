@@ -1,15 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 import AddItem from './components/AddItem'
 import ListItem from './components/ListItem'
 import { Item, List } from './types'
 
+const listKey = 'to-do-list';
 const initialListItem = { value: '', checked: false };
 
 function App() {
+  const savedList = localStorage.getItem(listKey);
+  const initialList = savedList ? JSON.parse(savedList) : [];
   const [listItem, setListItem] = useState<Item>(initialListItem);
-  const [toDoList, setToDoList] = useState<List>([]);
+  const [toDoList, setToDoList] = useState<List>(initialList);
+
+  useEffect(() => {
+    localStorage.setItem(listKey, JSON.stringify(toDoList));
+  }, [toDoList]);
 
   const handleChange = (value: string) => {
     setListItem({ value, checked: false });
